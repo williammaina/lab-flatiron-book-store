@@ -44,4 +44,27 @@ const bookStore = {
 }
 
 // Write your code here!
+function displayBook (myinfo){
+    const bookStoreTitle = document.querySelector("#header");
+    bookStoreTitle.textContent =myinfo.name;
+    
 
+ // Target the container where books will be displayed
+const bookList = document.querySelector("#book-list");
+
+bookStore.books.forEach((book) => {
+    // 1. Create the container
+    const bookContainer = document.createElement("li");
+
+    // 2. Use Template Literals to inject the data cleanly
+    bookContainer.innerHTML = `
+        <h3>${book.title}</h3>
+        <p>Author: ${book.author}</p>
+        <img src="${book.imageUrl}" alt="${book.title}" style="width:100px;">
+    `;
+
+    // 3. Append to the list
+    bookList.append(bookContainer);
+});
+}
+displayBook(bookStore)
